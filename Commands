@@ -1,0 +1,12 @@
+Get-LocalUser  | Get-Member
+Get-LocalUser | Where-Object {$PSItem.enabled  -eq $True}
+Get-Service | Where-Object {$PSItem.Status -eq 'Stopped'} | Out-File -FilePath C:\stopedservices.txt
+Get-LocalUser | Select-Object -Property name,enabled | format-List
+Get-LocalUser | Select-Object -Property name,enabled | Format-List | Out-File -FilePath C:\selectedusers.txt
+Get-Service | Sort-Object -Property -Name -Descending
+
+
+Get-LocalUser  | Export-CSV -Path C:\pav\test1.csv -NoTypeInformation -Delimiter ','
+Get-LocalUser  | Select-Object -Property name, description |  Export-CSV -Path C:\pav\test1.csv -NoTypeInformation -Delimiter ','
+Get-LocalUser | Where-Object {$PSItem.description -eq 'disable'} | Select-Object -Property name,description
+Get-LocalUser | Where-Object {$PSItem.description -eq 'disable'} | Select-Object -Property name,description  | Export-Csv -Path 'C:\pav\weeee.csv'
