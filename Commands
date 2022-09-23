@@ -10,3 +10,14 @@ Get-LocalUser  | Export-CSV -Path C:\pav\test1.csv -NoTypeInformation -Delimiter
 Get-LocalUser  | Select-Object -Property name, description |  Export-CSV -Path C:\pav\test1.csv -NoTypeInformation -Delimiter ','
 Get-LocalUser | Where-Object {$PSItem.description -eq 'disable'} | Select-Object -Property name,description
 Get-LocalUser | Where-Object {$PSItem.description -eq 'disable'} | Select-Object -Property name,description  | Export-Csv -Path 'C:\pav\weeee.csv'
+
+
+New-Item -Name 'TestDir' -Path 'C:\mydir\' -ItemType Directory
+New-Item -Path 'C:\mydir\' -Name '1.txt' -ItemType 'File'
+Get-ChildItem | Get-Member
+Get-ChildItem | Where-Object {$PSItem.Extension -eq '.txt'} 
+Get-ChildItem -Path 'C:\mydir' | Where-Object {$PSItem.Extension -eq '.txt'} | Remove-Item
+PS C:\> Get-LocalUser | Where-Object {$PSItem.Description -eq "sales"} | Disable-LocalUser
+PS C:\> Get-LocalUser | Where-Object {$PSItem.Description -eq "sales"} | Set-LocalUser -Description 'disabled'
+
+Get-Process | Where-Object {$PSItem.Handles -lt '100'} 
