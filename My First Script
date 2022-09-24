@@ -1,0 +1,7 @@
+'Type your name?' 
+[string]$Name = Read-Host
+'Welcome ' + $Name 
+
+'Please type your service you want to display?'
+[string]$service = Read-Host
+Get-Service -Name $service 
