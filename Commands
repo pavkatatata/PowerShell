@@ -29,3 +29,22 @@ Get-Process | Where-Object {$PSItem.Handles -lt '100'}
 'Please type your service you want to display?'
 [string]$service = Read-Host
 Get-Service -Name $service 
+
+
+$UserObject = Get-LocalUser -Name 'Guest'
+
+$UserObject
+
+if ($UserObject.Enabled -eq $true)
+{ 
+   Disable-LocalUser -Name 'Guest'
+   
+}
+else 
+{ 
+   
+   Enable-LocalUser -Name 'Guest'
+}
+
+
+Get-LocalUser -Name 'Guest'
