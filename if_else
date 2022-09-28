@@ -1,0 +1,19 @@
+'Give me a name '
+$UserName = Read-Host
+$UserObject = Get-LocalUser -Name $UserName
+'The User Name ' + $UserName  + ' has status ' + $UserObject.Enabled
+
+if ($UserObject.Enabled -eq $true)
+{
+   Disable-LocalUser -Name $UserObject.Name
+}
+else
+{
+  Enable-LocalUser -Name $UserObject.Name
+} 
+' '
+Get-LocalUser -Name $UserName
+' '
+$UserObject = Get-LocalUser -Name $UserName
+'now User Name ' + $UserName  + 'has status ' + $UserObject.Enabled
+
