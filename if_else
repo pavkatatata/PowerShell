@@ -89,5 +89,29 @@ $ServiceObject = Get-Service -Name $NameService
 ' Now the service wit name ' + $NameService + ' has the status ' + $ServiceObject.Status 
 Get-Service -Name $NameService
 
+......................................
+
+
+Set-ExecutionPolicy RemoteSigned
+
+'Give me Number1'
+[int]$Number1 = Read-Host
+'Give me Number2'
+[int]$Number2 = Read-Host
+
+
+if($Number1 -gt $Number2)
+{
+   'Number 1 is bigger then number2'
+}
+elseif ($Number1 -lt $Number2)
+{
+   'Number1 is less than Number2'
+}
+else
+{
+  'the numbers are equal' 
+}
+
 
 
