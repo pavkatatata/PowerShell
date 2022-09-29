@@ -17,3 +17,28 @@ Get-LocalUser -Name $UserName
 $UserObject = Get-LocalUser -Name $UserName
 'now User Name ' + $UserName  + 'has status ' + $UserObject.Enabled
 
+
+......................
+
+
+Set-ExecutionPolicy RemoteSigned
+
+' Write the Service name: '
+$NameService = Read-Host
+$ServiceObject = Get-Service -Name $NameService
+' The service ' + $ServiceObject.Name + ' is with status ' + $ServiceObject.Status
+
+if( $ServiceObject.Status -eq 'Running')
+{ ' '
+  'Stopping the Service ' + $ServiceObject.Name
+  Stop-Service -Name $ServiceObject.Name
+}
+elseif ($ServiceObject.Status -eq 'Stopped')
+{
+  ' ' 
+  'Starting the service with name ' +  $ServiceObject.Name
+  Start-Service -Name $ServiceObject.Name   
+}
+$ServiceObject = Get-Service -Name $NameService
+' Now the service wit name ' + $NameService + ' has the status ' + $ServiceObject.Status 
+Get-Service -Name $NameService
