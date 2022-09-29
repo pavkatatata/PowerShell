@@ -42,3 +42,52 @@ elseif ($ServiceObject.Status -eq 'Stopped')
 $ServiceObject = Get-Service -Name $NameService
 ' Now the service wit name ' + $NameService + ' has the status ' + $ServiceObject.Status 
 Get-Service -Name $NameService
+........................................
+
+Set-ExecutionPolicy RemoteSigned
+
+' Write the Service name: '
+$NameService = Read-Host
+$ServiceObject = Get-Service -Name $NameService
+' The service ' + $ServiceObject.Name + ' is with status ' + $ServiceObject.Status
+
+if( $ServiceObject.Status -eq 'Running')
+{ ' '
+     ' Do you really want to stop the Service? (y/n)?' 
+      $Answer = Read-Host
+      if($Answer -eq 'y') 
+      {
+        'Stopping the Service ' + $ServiceObject.Name + '........'
+  Stop-Service -Name $ServiceObject.Name
+      }
+      elseif ($Answer -eq 'n') 
+      { 
+      ' Ok, the serive will continue to work....'
+      }
+
+}
+elseif ($ServiceObject.Status -eq 'Stopped')
+{
+  ' ' 
+  
+     ' Do you really want to start the Service? (y/n)?' 
+      $Answer = Read-Host
+      if($Answer -eq 'y') 
+      {
+        'Starting the Service ' + $ServiceObject.Name + '........'
+  Start-Service -Name $ServiceObject.Name
+
+      }
+      elseif ($Answer -eq 'n') 
+      { 
+      ' Ok, the serive will continue to be stopped....'
+      }
+
+
+}
+$ServiceObject = Get-Service -Name $NameService
+' Now the service wit name ' + $NameService + ' has the status ' + $ServiceObject.Status 
+Get-Service -Name $NameService
+
+
+
