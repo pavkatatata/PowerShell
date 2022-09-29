@@ -111,7 +111,28 @@ elseif ($Number1 -lt $Number2)
 else
 {
   'the numbers are equal' 
+  
+ 
 }
 
+
+.................................................................
+
+'Give me your name '
+$name = Read-Host 
+'Give me your password' 
+$Password = Read-Host
+if ($name -eq 'David' -and $Password -eq 'cat123')
+{
+ 'Welcome ' +  $name
+}
+elseif( $name -eq 'Jan' -and $Password -eq 'fish123') 
+{
+   'Welcome ' + $name
+}
+else 
+{
+  'Name or password not correct '
+}
 
 
