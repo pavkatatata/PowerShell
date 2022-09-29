@@ -1,0 +1,14 @@
+'Pick the service' 
+$ServiceName = Read-Host
+$ServiseObject = Get-Service -Name $ServiceName
+
+while($ServiseObject.Status -eq 'stopped')
+{
+   $ServiseObject.Name + ' has the status ' + $ServiseObject.Status + ' , waiting to start' 
+
+   $ServiseObject = Get-Service -Name 'spooler'
+   
+   sleep -Milliseconds 1000
+}
+
+'ok service with name ' + $ServiseObject.Name + ' has the status ' + $ServiseObject.Status
