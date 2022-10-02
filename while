@@ -12,3 +12,30 @@ while($ServiseObject.Status -eq 'stopped')
 }
 
 'ok service with name ' + $ServiseObject.Name + ' has the status ' + $ServiseObject.Status
+
+
+.......................
+
+
+
+$randomNumber = Get-Random -Minimum 1 -Maximum 11
+'Please guess the number ' 
+$guesNumber = Read-Host
+
+while ( $guesNumber -ne $randomNumber ) 
+{
+   if ( $guesNumber -gt $randomNumber ) 
+   {
+      'Guess again, your number ' +  $guesNumber + ' is too high '
+      $guesNumber = Read-Host
+   }
+    elseif ( $guesNumber -lt  $randomNumber ) 
+    {
+        ' Guess again your number ' + $guesNumber + ' is too low' 
+        $guesNumber = Read-Host
+    }
+
+    
+}
+
+'YESSS, you GUESSED IT! ' + ' THE NUMBER IS ' + $guesNumber 
