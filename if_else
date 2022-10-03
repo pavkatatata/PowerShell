@@ -156,4 +156,9 @@ foreach($LocalUser in $LocalUsers)
 
 Get-LocalUser
 
+.......................
 
+
+Get-LocalUser | Where-Object {$PSItem.enabled -eq $true} | Set-LocalUser -Description 'enabled account'
+
+Get-LocalUser | Where-Object {$PSItem.enabled -eq $false} | Set-LocalUser -Description 'disabled account'
