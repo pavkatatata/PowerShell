@@ -1,0 +1,10 @@
+Task1: 
+
+$Services = @()
+$Services = Get-Service
+
+foreach($item in $Services)
+{
+  'The ' + $item.Name + ' is a great service '
+
+}
