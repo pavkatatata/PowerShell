@@ -136,3 +136,24 @@ else
 }
 
 
+..................................................................................
+
+$LocalUsers = Get-LocalUser
+
+
+foreach($LocalUser in $LocalUsers)
+{
+    if($LocalUser.Enabled -eq $true)
+    { 
+       Set-LocalUser -Name $LocalUser.Name -Description 'Enabled Account'
+    }
+    elseif($LocalUser.Enabled -eq $false)
+    { 
+       Set-LocalUser -Name $LocalUser -Description 'Disabled Account'
+    }
+  
+}
+
+Get-LocalUser
+
+
