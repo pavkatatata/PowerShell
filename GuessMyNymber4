@@ -54,3 +54,40 @@ if ( $count -eq 0)
 ' '
 'Sorrry, you lose, it was ' + $guestNumber
 }
+
+
+.........................
+
+
+$guestNumber = Get-Random -Minimum 1 -Maximum 4
+
+[int]$tryToGuess = 0;
+$count = 3
+
+'Please guees the number between 1  and 4, you have 3 tries!'
+while( $count -ne 0)
+{
+   $count--
+   [int]$tryToGuess = Read-Host
+    if( $tryToGuess -eq $guestNumber)
+   {
+    
+    "Yessss, you guess it! The guess number is " + $guestNumber + ' you had ' + $count + ' tries left'  
+    break;
+   }
+
+   elseif($tryToGuess -gt $guestNumber )
+   {
+      'Guess again, your ' + $tryToGuess + ' is too high' + '  and you have ' + $count + ' tries left'
+   }
+   elseif($tryToGuess -lt $guestNumber )
+   {
+       'Guess again, your ' + $tryToGuess + ' is too low' + '  and you have ' + $count + ' tries left'
+   }
+   
+}
+if ( $count -eq 0 -and $guestNumber -ne $tryToGuess)
+{
+' '
+'Sorrry, you lose, it was ' + $guestNumber
+}
