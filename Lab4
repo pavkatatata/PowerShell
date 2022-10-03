@@ -8,3 +8,21 @@ foreach($item in $Services)
   'The ' + $item.Name + ' is a great service '
 
 }
+
+
+................................................
+Task2: 
+
+
+
+$Services = @()
+$Services = Get-Service
+
+foreach($item in $Services)
+{
+  'The ' + $item.Name + ' is a great service '
+  if($item.Name -eq "spooler")
+  { 'Wow, I found the spooler service ! Really Cool! '
+  }
+
+}
