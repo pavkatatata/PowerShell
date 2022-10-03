@@ -1,0 +1,26 @@
+$guestNumber = Get-Random -Minimum 1 -Maximum 9
+
+[int]$tryToGuess = 0;
+$count = 3
+
+'Please guee the number between 1  and 4, you have 3 tries!'
+for($i = 0; $i -lt 3; $i++) 
+{
+   $count--
+   [int]$tryToGuess = Read-Host
+   if( $tryToGuess -eq $guestNumber)
+   {
+    
+    "Yessss, you guess it! The guess number is " + $guestNumber + ' you had ' + $count + ' tries left'  
+    break;
+   }
+   else 
+   { 
+     'Guess again, your ' + $tryToGuess + ' is not right'
+   }
+   if ( $count -eq 0) 
+   {
+   ' ' 
+   'Sorrry, you lose, it was ' + $guestNumber
+   }
+}
