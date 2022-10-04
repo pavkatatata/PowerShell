@@ -1,0 +1,11 @@
+
+$UsersToCreate =  Get-Content -Path 'C:\test1.txt'
+
+foreach($item in $UsersToCreate)
+{
+
+$Password = ConvertTo-SecureString -String 'Password'-AsPlainText -Force
+
+New-LocalUser -Password $Password -Name $item -Description 'cool'
+}
+
