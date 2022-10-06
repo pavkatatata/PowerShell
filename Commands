@@ -48,3 +48,18 @@ else
 
 
 Get-LocalUser -Name 'Guest'
+
+..........................................
+
+$Files = Get-Content -Path 'c:\test1.txt' 
+
+
+foreach($item in $Files)
+{
+  New-Item -Path "c:\" -Name $item -ItemType 'directory'
+}
+
+
+
+
+
