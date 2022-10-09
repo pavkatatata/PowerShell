@@ -1,0 +1,19 @@
+$usersToImport = Import-Csv -Path C:\users2.csv
+
+$usersToImport
+
+foreach($item in $usersToImport)
+{
+   $password = ConvertTo-SecureString $item.PASSWORD -AsPlainText -Force
+
+   if( $item.DEPARTMENT -eq 'EvilWizzards')
+   { 
+     ' This user cannot be imported because the Department is Evilwazrds!'
+   }
+   else
+   {
+      New-LocalUser -Name $item.Name -Password $password -Description $item.DEPARTMENT
+   }
+  
+ 
+}
