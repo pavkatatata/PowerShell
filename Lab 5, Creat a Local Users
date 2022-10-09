@@ -17,3 +17,41 @@ foreach($item in $usersToImport)
   
  
 }
+
+
+..........................
+
+
+$usersToImport = Import-Csv -Path C:\users2.csv
+
+$usersToImport
+
+foreach($item in $usersToImport)
+{
+   $password = ConvertTo-SecureString $item.PASSWORD -AsPlainText -Force
+   $createLocalUser = New-LocalUser -Name $item.Name -Password $password -Description $item.DEPARTMENT
+
+   if( $item.DEPARTMENT -eq 'EvilWizzards')
+   { 
+    
+      'Do you want to create the user with Department EvilWizards? Type y/n? '
+
+      $answer = Read-Host
+      if($answer -eq 'y')
+      { 
+       $createLocalUser
+      }
+      elseif($answer -eq 'n')
+      {
+         ' Ok, will not create the users'
+         
+      }
+   
+   }
+   else
+   {
+      $createLocalUser
+   }
+  
+ 
+}
