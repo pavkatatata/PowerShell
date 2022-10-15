@@ -9,8 +9,9 @@ $fullName = $firstName + ' ' + $lastName
 
 $password = ConvertTo-SecureString 'Traktor_123' -AsPlainText -Force
 
-New-LocalUser -Name $accountName -Password $password -FullName $fullName -Description 'Test User'
+New-LocalUser -Name $accountName -Password $password -FullName $fullName -Description 'Test User' | Set-LocalUser -PasswordNeverExpires $false -
 Add-LocalGroupMember -Group Users -Member $accountName
+
 
 
 'The account ' + $fullName + ' was added, will have to make a restart'
