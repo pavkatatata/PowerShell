@@ -1,0 +1,11 @@
+'Type first name' 
+$firstName = Read-Host
+'Type Last name'
+$lastName = Read-Host
+$accountName = $firstName.ToLower() + '.' + $lastName.ToLower()
+$fullName = $firstName + ' ' + $lastName
+
+'Type password'
+$password = ConvertTo-SecureString Read-Host -AsPlainText -Force
+
+New-LocalUser -Name $accountName -Password $password -FullName $fullName -Description 'Test User'
